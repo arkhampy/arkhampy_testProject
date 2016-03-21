@@ -63,6 +63,12 @@ module.exports = {
     });
   },
 
+  destroy: function(req, res, next){
+    Customer.destroy(req.param('id')).exec(function(){
+      res.redirect('/customer/');
+    });
+  }
+
 
 
 };
