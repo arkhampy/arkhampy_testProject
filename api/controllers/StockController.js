@@ -21,7 +21,15 @@ module.exports = {
     Stock.create(req.params.all(), function stockCreated(err, stock){
       if(err) return next(err);
 
-      res.json(stock);
+      //res.json(stock);
+      res.redirect('/customer/show/' + stock.owner);
+    });
+  },
+
+  destroy: function(req, res, next){
+    Stock.destroy(req.param('id')).exec(function(){
+      res.redirect('/customer/');
+
     });
   }
 
